@@ -1,0 +1,10 @@
+name: Lessons
+form: $/pensoft/lessons/models/lessonsdata/fields.yaml
+modelClass: Pensoft\Lessons\Models\LessonsData
+defaultRedirect: pensoft/lessons/lessons
+create:
+    redirect: 'pensoft/lessons/lessons/update/:id'
+    redirectClose: pensoft/lessons/lessons
+update:
+    redirect: pensoft/lessons/lessons
+    redirectClose: pensoft/lessons/lessons

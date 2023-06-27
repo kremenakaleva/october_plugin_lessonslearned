@@ -1,0 +1,11 @@
+plugin:
+    name: 'pensoft.lessons::lang.plugin.name'
+    description: 'pensoft.lessons::lang.plugin.description'
+    author: Pensoft
+    icon: oc-icon-files-o
+    homepage: ''
+navigation:
+    main-menu-item:
+        label: Lessons
+        url: pensoft/lessons/lessons
+        icon: icon-files-o

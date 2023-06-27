@@ -1,0 +1,122 @@
+columns:
+    id:
+        label: id
+        type: number
+        searchable: true
+    name:
+        label: Name
+        type: text
+        searchable: true
+    classification:
+        label: classification
+        type: text
+        searchable: true
+    transversal_topics:
+        label: transversal_topics
+        type: text
+        searchable: true
+    four_m:
+        label: 4m
+        type: text
+        searchable: true
+        sortable: true
+    challenges:
+        label: challenges
+        type: text
+        searchable: true
+        sortable: true
+    related_product:
+        label: related_product
+        type: text
+        searchable: true
+        sortable: true
+    city:
+        label: city
+        type: text
+        searchable: true
+        sortable: true
+    area:
+        label: area
+        type: text
+        searchable: true
+        sortable: true
+    scale:
+        label: scale
+        type: text
+        searchable: true
+        sortable: true
+    time:
+        label: time
+        type: text
+        searchable: true
+        sortable: true
+    contact:
+        label: contact
+        type: text
+        searchable: true
+        sortable: true
+    related_docs:
+        label: related_docs
+        type: text
+        searchable: true
+        sortable: true
+    available_documents:
+        label: available_documents
+        type: text
+        searchable: true
+        sortable: true
+    how_lesson_learned:
+        label: how_lesson_learned
+        type: text
+        searchable: true
+        sortable: true
+    needs:
+        label: needs
+        type: text
+        searchable: true
+        sortable: true
+    innovation_aspects:
+        label: innovation_aspects
+        type: text
+        searchable: true
+        sortable: true
+    benefits:
+        label: benefits
+        type: text
+        searchable: true
+        sortable: true
+    key_factors:
+        label: key_factors
+        type: text
+        searchable: true
+        sortable: true
+    gaps_identified:
+        label: gaps_identified
+        type: text
+        searchable: true
+        sortable: true
+    gaps_what:
+        label: gaps_what
+        type: text
+        searchable: true
+        sortable: true
+    gaps_how:
+        label: gaps_how
+        type: text
+        searchable: true
+        sortable: true
+    applicability:
+        label: applicability
+        type: text
+        searchable: true
+        sortable: true
+    adding_resources:
+        label: adding_resources
+        type: text
+        searchable: true
+        sortable: true
+    complementary_outputs:
+        label: complementary_outputs
+        type: text
+        searchable: true
+        sortable: true
