@@ -9,6 +9,15 @@ fields:
         size: ''
         span: auto
         type: textarea
+    category:
+        label: Category
+        options:
+            1: 'Policy & planning'
+            2: 'Social impact'
+            3: 'Co-creation & empowerment'
+        showSearch: true
+        span: auto
+        type: dropdown
 tabs:
     fields:
         classification:

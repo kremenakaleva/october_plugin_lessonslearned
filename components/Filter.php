@@ -31,6 +31,7 @@ class Filter extends ComponentBase
     }
 
     protected function filterLessons(){
+        $categories = \Input::get('category');
         $classification = \Input::get('classification');
         $transversal_topics = \Input::get('transversal_topics');
         $four_m = \Input::get('four_m');
@@ -42,6 +43,7 @@ class Filter extends ComponentBase
         $search = \Input::get('searchQuery');
 
         $this->page['classification'] = $classification;
+        $this->page['categories'] = $categories;
         $this->page['transversal_topics'] = $transversal_topics;
         $this->page['four_m'] = $four_m;
         $this->page['challenges'] = $challenges;
@@ -55,6 +57,10 @@ class Filter extends ComponentBase
 
         if($classification){
             $query->where('classification', 'ILIKE', '%'.trim($classification).'%');
+        }
+
+        if($categories && count($categories)){
+            $query->whereIn('category', $categories);
         }
 
         if($transversal_topics){

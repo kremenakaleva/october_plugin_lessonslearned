@@ -1,97 +1,114 @@
 {% set lessons = filter.lessons %}
+<div class="left_column_content filter_form_container">
+    <form method="get" action="{{url('lessons-learned')}}" id="filter-lessons-form">
+        <div id="search" class="search" style="display: flex;">
+            <input class="search" name="searchQuery" type="text" autocomplete="on" placeholder="Search" value="{{searchQuery}}">
+            <button class="pr p-search big" type="submit"></button>
+        </div>
+
+        <div class="fields custom-select filter-lessons-form mt-2">
+
+            {% if not categories.count() %} {% set allChecked = true %} {% endif %}
+
+            <label class="ch_container">Policy & planning
+                <input type="checkbox" name="category[]" value="1" id="category_1" {% for category in categories %} {% if category == 1 %} checked="checked" {% endif %}{% endfor %} {% if allChecked %} checked="checked" {% endif %}>
+                <span class="checkmark"></span>
+            </label>
+            <label class="ch_container">Social impact
+                <input type="checkbox" name="category[]" value="2" id="category_2" {% for category in categories %} {% if category == 2 %} checked="checked" {% endif %}{% endfor %} {% if allChecked %} checked="checked" {% endif %}>
+                <span class="checkmark"></span>
+            </label>
+            <label class="ch_container">Co-creation & empowerment
+                <input type="checkbox" name="category[]" value="3" id="category_3" {% for category in categories %} {% if category == 3 %} checked="checked" {% endif %}{% endfor %} {% if allChecked %} checked="checked" {% endif %}>
+                <span class="checkmark"></span>
+            </label>
+
+            <h3>CLASSIFICATION</h3>
+            <div class="row">
+                <div class="col-xs-12">
+                    <select name="classification" class="classic">
+                        <option value=""> -- Classification -- </option>
+                        <option value="NBS Technical Design" {% if classification == "NBS Technical Design" %} selected {% endif %}>NBS Technical Design &amp; Implementation</option>
+                        <option value="NBS TYPOLOGY" {% if classification == "NBS TYPOLOGY" %} selected {% endif %}>NBS TYPOLOGY</option>
+                        <option value="Communication and Awareness Raising" {% if classification == "Communication and Awareness Raising" %} selected {% endif %}>Communication and Awareness Raising</option>
+                        <option value="COMMUNICATION STRATEGY" {% if classification == "COMMUNICATION STRATEGY" %} selected {% endif %}>COMMUNICATION STRATEGY</option>
+                        <option value="NBS Planning" {% if classification == "NBS Planning" %} selected {% endif %}>NBS Planning</option>
+                        <option value="INTEGRATED MANAGEMENT SYSTEM" {% if classification == "INTEGRATED MANAGEMENT SYSTEM" %} selected {% endif %}>INTEGRATED MANAGEMENT SYSTEM</option>
+                        <option value="AWARENESS RAISING" {% if classification == "AWARENESS RAISING" %} selected {% endif %}>AWARENESS RAISING</option>
+                        <option value="INSTRUMENTS AND METHODS" {% if classification == "INSTRUMENTS AND METHODS" %} selected {% endif %}>INSTRUMENTS AND METHODS</option>
+                        <option value="COLLABORATIVE GOVERNANCE APPROACHES" {% if classification == "COLLABORATIVE GOVERNANCE APPROACHES" %} selected {% endif %}>COLLABORATIVE GOVERNANCE APPROACHES</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <select name="transversal_topics" class="classic">
+                        <option value=""> -- Transversal topics -- </option>
+                        <option value="Facing COVID-19" {% if transversal_topics == "Facing COVID-19" %} selected {% endif %}>Facing COVID-19</option>
+                        <option value="Co-creation" {% if transversal_topics == "Co-creation" %} selected {% endif %}>Co-creation</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <select name="four_m" class="classic">
+                        <option value=""> -- 4 M -- </option>
+                        <option value="Monitoring" {% if four_m == "Monitoring" %} selected {% endif %}>Monitoring</option>
+                        <option value="Management" {% if four_m == "Management" %} selected {% endif %}>Management</option>
+                        <option value="Methods" {% if four_m == "Methods" %} selected {% endif %}>Methods</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <select name="challenges" class="classic">
+                        <option value=""> -- Challenges -- </option>
+                        <option value="Human health" {% if challenges == "Human health" %} selected {% endif %}>Human health and well-being</option>
+                        <option value="Sustainable" {% if challenges == "Sustainable" %} selected {% endif %}>Sustainable economic prosperity</option>
+                        <option value="Social cohesion" {% if challenges == "Social cohesion" %} selected {% endif %}>Social cohesion and environmental justice</option>
+                        <option value="Citizen security" {% if challenges == "Citizen security" %} selected {% endif %}>Citizen security</option>
+                    </select>
+                </div>
+            </div>
+
+            <h3>INDENTIFICATION</h3>
+            <div class="row">
+                <div class="col-xs-12">
+                    <input name="city" placeholder="City" value="{{city}}">
+                </div>
+            </div>
+            <!--                <div class="row">-->
+            <!--                    <div class="col-xs-12">-->
+            <!--                        <input name="area" placeholder="CAL/NBS/Area" value="{{area}}">-->
+            <!--                    </div>-->
+            <!--                </div>-->
+            <!--                <div class="row">-->
+            <!--                    <div class="col-xs-12">-->
+            <!--                        <input name="time" placeholder="Time" value="{{time}}">-->
+            <!--                    </div>-->
+            <!--                </div>-->
+            <!--                <div class="row">-->
+            <!--                    <div class="col-xs-12">-->
+            <!--                        <input name="contact" placeholder="Contact" value="{{contact}}">-->
+            <!--                    </div>-->
+            <!--                </div>-->
+            <div class="row">
+                <div class="col-xs-12">
+                    <button type="submit">Filter</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="container first-child">
 <div class="row between-md around-xs">
-    <div class="col-md-3 col-xs-12 left_column_content filter_form_container">
-        <form method="get" action="{{url('lessons-learned')}}" id="filter-lessons-form">
-            <div id="search" class="search" style="display: flex;">
-                <input class="search" name="searchQuery" type="text" autocomplete="on" placeholder="Search" value="{{searchQuery}}">
-                <button class="pr p-search big" type="submit"></button>
-            </div>
 
-            <div class="fields custom-select filter-lessons-form">
-
-                <h3>CLASSIFICATION</h3>
-                <div class="row">
-                    <div class="col-xs-12">
-                        <select name="classification" class="classic">
-                            <option value=""> -- Classification -- </option>
-                            <option value="NBS Technical Design" {% if classification == "NBS Technical Design" %} selected {% endif %}>NBS Technical Design &amp; Implementation</option>
-                            <option value="NBS TYPOLOGY" {% if classification == "NBS TYPOLOGY" %} selected {% endif %}>NBS TYPOLOGY</option>
-                            <option value="Communication and Awareness Raising" {% if classification == "Communication and Awareness Raising" %} selected {% endif %}>Communication and Awareness Raising</option>
-                            <option value="COMMUNICATION STRATEGY" {% if classification == "COMMUNICATION STRATEGY" %} selected {% endif %}>COMMUNICATION STRATEGY</option>
-                            <option value="NBS Planning" {% if classification == "NBS Planning" %} selected {% endif %}>NBS Planning</option>
-                            <option value="INTEGRATED MANAGEMENT SYSTEM" {% if classification == "INTEGRATED MANAGEMENT SYSTEM" %} selected {% endif %}>INTEGRATED MANAGEMENT SYSTEM</option>
-                            <option value="AWARENESS RAISING" {% if classification == "AWARENESS RAISING" %} selected {% endif %}>AWARENESS RAISING</option>
-                            <option value="INSTRUMENTS AND METHODS" {% if classification == "INSTRUMENTS AND METHODS" %} selected {% endif %}>INSTRUMENTS AND METHODS</option>
-                            <option value="COLLABORATIVE GOVERNANCE APPROACHES" {% if classification == "COLLABORATIVE GOVERNANCE APPROACHES" %} selected {% endif %}>COLLABORATIVE GOVERNANCE APPROACHES</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-xs-12">
-                        <select name="transversal_topics" class="classic">
-                            <option value=""> -- Transversal topics -- </option>
-                            <option value="Facing COVID-19" {% if transversal_topics == "Facing COVID-19" %} selected {% endif %}>Facing COVID-19</option>
-                            <option value="Co-creation" {% if transversal_topics == "Co-creation" %} selected {% endif %}>Co-creation</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-xs-12">
-                        <select name="four_m" class="classic">
-                            <option value=""> -- 4 M -- </option>
-                            <option value="Monitoring" {% if four_m == "Monitoring" %} selected {% endif %}>Monitoring</option>
-                            <option value="Management" {% if four_m == "Management" %} selected {% endif %}>Management</option>
-                            <option value="Methods" {% if four_m == "Methods" %} selected {% endif %}>Methods</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-xs-12">
-                        <select name="challenges" class="classic">
-                            <option value=""> -- Challenges -- </option>
-                            <option value="Human health" {% if challenges == "Human health" %} selected {% endif %}>Human health and well-being</option>
-                            <option value="Sustainable" {% if challenges == "Sustainable" %} selected {% endif %}>Sustainable economic prosperity</option>
-                            <option value="Social cohesion" {% if challenges == "Social cohesion" %} selected {% endif %}>Social cohesion and environmental justice</option>
-                            <option value="Citizen security" {% if challenges == "Citizen security" %} selected {% endif %}>Citizen security</option>
-                        </select>
-                    </div>
-                </div>
-
-                <h3>INDENTIFICATION</h3>
-                <div class="row">
-                    <div class="col-xs-12">
-                        <input name="city" placeholder="City" value="{{city}}">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-xs-12">
-                        <input name="area" placeholder="CAL/NBS/Area" value="{{area}}">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-xs-12">
-                        <input name="time" placeholder="Time" value="{{time}}">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-xs-12">
-                        <input name="contact" placeholder="Contact" value="{{contact}}">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-xs-12">
-                        <button type="submit">Filter</button>
-                    </div>
-                </div>
-            </div>
-        </form>
-    </div>
-    <div class="col-md-9 col-xs-12 right_column_content accordion_container">
+    <div class="col-md-12 col-xs-12 right_column_content accordion_container">
         {% for lesson in lessons %}
-        <div class="accordion_item key_{{lesson.id}}">
+        <div class="accordion_item key_{{lesson.id}} category_{{lesson.category}}">
             <div class="accordion">{{lesson.name}}</div>
             <div class="panel">
                 <h2>CLASSIFICATION</h2>
@@ -226,5 +243,11 @@
             </div>
         </div>
         {% endfor %}
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
     </div>
 </div>
+</div>
+
+

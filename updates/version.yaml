@@ -18,3 +18,6 @@
 1.0.7:
     - 'Updated table pensoft_lessons_data'
     - builder_table_update_pensoft_lessons_data_5.php
+1.0.8:
+    - 'Updated table pensoft_lessons_data'
+    - builder_table_update_pensoft_lessons_data_6.php
