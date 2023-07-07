@@ -23,3 +23,5 @@
     - builder_table_update_pensoft_lessons_data_6.php
 1.0.9:
     - 'composer added'
+1.0.10:
+    - 'filter fix'

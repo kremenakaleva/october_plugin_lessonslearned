@@ -8,8 +8,10 @@
 
         <div class="fields custom-select filter-lessons-form mt-2">
 
-            {% if not categories.count() %} {% set allChecked = true %} {% endif %}
-
+            {% set allChecked = true %}
+            {% for cat in categories %}
+            {% set allChecked = false %}
+            {% endfor %}
             <label class="ch_container">Policy & planning
                 <input type="checkbox" name="category[]" value="1" id="category_1" {% for category in categories %} {% if category == 1 %} checked="checked" {% endif %}{% endfor %} {% if allChecked %} checked="checked" {% endif %}>
                 <span class="checkmark"></span>
