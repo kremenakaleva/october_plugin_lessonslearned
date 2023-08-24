@@ -13,15 +13,15 @@
             {% set allChecked = false %}
             {% endfor %}
             <label class="ch_container">Policy & planning
-                <input type="checkbox" name="category[]" value="1" id="category_1" {% for category in categories %} {% if category == 1 %} checked="checked" {% endif %}{% endfor %} {% if allChecked %} checked="checked" {% endif %}>
+                <input type="checkbox" onchange="$(this).form().submit();" name="category[]" value="1" id="category_1" {% for category in categories %} {% if category == 1 %} checked="checked" {% endif %}{% endfor %} {% if allChecked %} checked="checked" {% endif %}>
                 <span class="checkmark"></span>
             </label>
             <label class="ch_container">Social impact
-                <input type="checkbox" name="category[]" value="2" id="category_2" {% for category in categories %} {% if category == 2 %} checked="checked" {% endif %}{% endfor %} {% if allChecked %} checked="checked" {% endif %}>
+                <input type="checkbox" onchange="$(this).form().submit();" name="category[]" value="2" id="category_2" {% for category in categories %} {% if category == 2 %} checked="checked" {% endif %}{% endfor %} {% if allChecked %} checked="checked" {% endif %}>
                 <span class="checkmark"></span>
             </label>
             <label class="ch_container">Co-creation & empowerment
-                <input type="checkbox" name="category[]" value="3" id="category_3" {% for category in categories %} {% if category == 3 %} checked="checked" {% endif %}{% endfor %} {% if allChecked %} checked="checked" {% endif %}>
+                <input type="checkbox" onchange="$(this).form().submit();" name="category[]" value="3" id="category_3" {% for category in categories %} {% if category == 3 %} checked="checked" {% endif %}{% endfor %} {% if allChecked %} checked="checked" {% endif %}>
                 <span class="checkmark"></span>
             </label>
 
@@ -107,150 +107,154 @@
     </form>
 </div>
 <div class="container first-child">
-<div class="row between-md around-xs">
+    <div class="row between-md around-xs">
+        <div class="col-md-12 col-xs-12 right_column_content accordion_container">
+                <div class="categoriesFilter">
+                    <a onclick="filterByCategory(1);">Policy & planning</a>
+                    <a onclick="filterByCategory(2);">Social impacts</a>
+                    <a onclick="filterByCategory(3);">Co-creation & empowerment</a>
+                </div>
+            {% for lesson in lessons %}
+            <div class="accordion_item key_{{lesson.id}} category_{{lesson.category}}">
+                <div class="accordion">{{lesson.name}}</div>
+                <div class="panel">
+                    <h2>CLASSIFICATION</h2>
+                    {% if lesson.classification %}
+                    <p><b>Classification</b></p>
+                    <ul>
+                        {% for classification in lesson.classification %}
+                        <li>{{classification}}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
 
-    <div class="col-md-12 col-xs-12 right_column_content accordion_container">
-        {% for lesson in lessons %}
-        <div class="accordion_item key_{{lesson.id}} category_{{lesson.category}}">
-            <div class="accordion">{{lesson.name}}</div>
-            <div class="panel">
-                <h2>CLASSIFICATION</h2>
-                {% if lesson.classification %}
-                <p><b>Classification</b></p>
-                <ul>
-                    {% for classification in lesson.classification %}
-                    <li>{{classification}}</li>
-                    {% endfor %}
-                </ul>
-                {% endif %}
+                    {% if lesson.transversal_topics %}
+                    <p>&nbsp;</p><p><b>Transversal topics</b></p>
+                    <ul>
+                        <li>{{lesson.transversal_topics}}</li>
+                    </ul>
+                    {% endif %}
 
-                {% if lesson.transversal_topics %}
-                <p>&nbsp;</p><p><b>Transversal topics</b></p>
-                <ul>
-                    <li>{{lesson.transversal_topics}}</li>
-                </ul>
-                {% endif %}
+                    {% if lesson.four_m %}
+                    <p>&nbsp;</p><p><b>4 M</b></p>
+                    <ul>
+                        <li>{{lesson.four_m}}</li>
+                    </ul>
+                    {% endif %}
 
-                {% if lesson.four_m %}
-                <p>&nbsp;</p><p><b>4 M</b></p>
-                <ul>
-                    <li>{{lesson.four_m}}</li>
-                </ul>
-                {% endif %}
+                    {% if lesson.challenges %}
+                    <p>&nbsp;</p><p><b>Challenges</b></p>
+                    <ul>
+                        {% for challenge in lesson.challenges %}
+                        <li>{{challenge}}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
 
-                {% if lesson.challenges %}
-                <p>&nbsp;</p><p><b>Challenges</b></p>
-                <ul>
-                    {% for challenge in lesson.challenges %}
-                    <li>{{challenge}}</li>
-                    {% endfor %}
-                </ul>
-                {% endif %}
-
-                {% if lesson.related_product %}
-                <p>&nbsp;</p><p><b>Related product</b></p>
-                <ul>
-                    <li>{{lesson.related_product}}</li>
-                </ul>
-                {% endif %}
-
-
-                {% if lesson.city or lesson.area or lesson.scale or lesson.time or lesson.contact or lesson.related_docs or lesson.available_documents %}
-                <h2>INDENTIFICATION</h2>
-                {% if lesson.city %}
-                <p><b>City (Where?):</b> {{lesson.city}}</p>
-                {% endif %}
-
-                {% if lesson.area %}
-                <p><b>CAL/NBS/ Area (Where?):</b> {{lesson.area}}</p>
-                {% endif %}
-
-                {% if lesson.scale %}
-                <p><b>Scale (Where it was implented?):</b> {{lesson.scale}}</p>
-                {% endif %}
-
-                {% if lesson.time %}
-                <p><b>Time (When?):</b> {{lesson.time}}</p>
-                {% endif %}
-
-                {% if lesson.contact %}
-                <p><b>Contact (Who?):</b> {{lesson.contact}}</p>
-                {% endif %}
-
-                {% if lesson.related_docs %}
-                <p><b>Related docs/ events/ tools (How?):</b> {{lesson.related_docs}}</p>
-                {% endif %}
-
-                {% if lesson.available_documents %}
-                <p><b>Available documents:</b> {{lesson.available_documents}}</p>
-                {% endif %}
-                {% endif %}
-
-                {% if lesson.how_lesson_learned or lesson.needs or lesson.innovation_aspects or lesson.benefits or lesson.key_factors %}
-                <h2>DETAILS/ RELATIONS (Clear statement of the LL)</h2>
-
-                {% if lesson.how_lesson_learned %}
-                <p><b>How the lesson was learned:</b> {{lesson.how_lesson_learned}}</p>
-                {% endif %}
-
-                {% if lesson.needs %}
-                <p><b>Needs / Challenges:</b> {{lesson.needs|raw}}</p>
-                {% endif %}
-
-                {% if lesson.innovation_aspects %}
-                <p><b>Innovation aspects:</b> {{lesson.innovation_aspects}}</p>
-                {% endif %}
-
-                {% if lesson.benefits %}
-                <p><b>Benefits of using the lesson:</b> {{lesson.benefits}}</p>
-                {% endif %}
-
-                {% if lesson.key_factors %}
-                <p><b>Key factors:</b> {{lesson.key_factors}}</p>
-                {% endif %}
-                {% endif %}
+                    {% if lesson.related_product %}
+                    <p>&nbsp;</p><p><b>Related product</b></p>
+                    <ul>
+                        <li>{{lesson.related_product}}</li>
+                    </ul>
+                    {% endif %}
 
 
-                {% if lesson.gaps_identified or lesson.gaps_what or lesson.gaps_how %}
-                <h2>GAPS</h2>
+                    {% if lesson.city or lesson.area or lesson.scale or lesson.time or lesson.contact or lesson.related_docs or lesson.available_documents %}
+                    <h2>INDENTIFICATION</h2>
+                    {% if lesson.city %}
+                    <p><b>City (Where?):</b> {{lesson.city}}</p>
+                    {% endif %}
 
-                {% if lesson.gaps_identified %}
-                <p><b>GAPs identified in T.1.2. (does the lesson learned cover them? Which?:</b> {{lesson.gaps_identified}}</p>
-                {% endif %}
+                    {% if lesson.area %}
+                    <p><b>CAL/NBS/ Area (Where?):</b> {{lesson.area}}</p>
+                    {% endif %}
 
-                {% if lesson.gaps_what %}
-                <p><b>What did not go well?:</b> {{lesson.gaps_what}}</p>
-                {% endif %}
+                    {% if lesson.scale %}
+                    <p><b>Scale (Where it was implented?):</b> {{lesson.scale}}</p>
+                    {% endif %}
 
-                {% if lesson.gaps_how %}
-                <p><b>How can barriers be solved?:</b> {{lesson.gaps_how}}</p>
-                {% endif %}
-                {% endif %}
+                    {% if lesson.time %}
+                    <p><b>Time (When?):</b> {{lesson.time}}</p>
+                    {% endif %}
 
-                {% if lesson.applicability or lesson.adding_resources or lesson.complementary_outputs %}
-                <h2>Explore</h2>
+                    {% if lesson.contact %}
+                    <p><b>Contact (Who?):</b> {{lesson.contact}}</p>
+                    {% endif %}
 
-                {% if lesson.applicability %}
-                <p><b>Applicability to other scales, interventions, areas, cities:</b> {{lesson.applicability}}</p>
-                {% endif %}
+                    {% if lesson.related_docs %}
+                    <p><b>Related docs/ events/ tools (How?):</b> {{lesson.related_docs}}</p>
+                    {% endif %}
 
-                {% if lesson.adding_resources %}
-                <p><b>Adding resources from/to other policies or plans:</b> {{lesson.adding_resources}}</p>
-                {% endif %}
+                    {% if lesson.available_documents %}
+                    <p><b>Available documents:</b> {{lesson.available_documents}}</p>
+                    {% endif %}
+                    {% endif %}
 
-                {% if lesson.complementary_outputs %}
-                <p><b>Complementary outputs (not expected):</b> {{lesson.complementary_outputs}}</p>
-                {% endif %}
-                {% endif %}
+                    {% if lesson.how_lesson_learned or lesson.needs or lesson.innovation_aspects or lesson.benefits or lesson.key_factors %}
+                    <h2>DETAILS/ RELATIONS (Clear statement of the LL)</h2>
 
+                    {% if lesson.how_lesson_learned %}
+                    <p><b>How the lesson was learned:</b> {{lesson.how_lesson_learned}}</p>
+                    {% endif %}
+
+                    {% if lesson.needs %}
+                    <p><b>Needs / Challenges:</b> {{lesson.needs|raw}}</p>
+                    {% endif %}
+
+                    {% if lesson.innovation_aspects %}
+                    <p><b>Innovation aspects:</b> {{lesson.innovation_aspects}}</p>
+                    {% endif %}
+
+                    {% if lesson.benefits %}
+                    <p><b>Benefits of using the lesson:</b> {{lesson.benefits}}</p>
+                    {% endif %}
+
+                    {% if lesson.key_factors %}
+                    <p><b>Key factors:</b> {{lesson.key_factors}}</p>
+                    {% endif %}
+                    {% endif %}
+
+
+                    {% if lesson.gaps_identified or lesson.gaps_what or lesson.gaps_how %}
+                    <h2>GAPS</h2>
+
+                    {% if lesson.gaps_identified %}
+                    <p><b>GAPs identified in T.1.2. (does the lesson learned cover them? Which?:</b> {{lesson.gaps_identified}}</p>
+                    {% endif %}
+
+                    {% if lesson.gaps_what %}
+                    <p><b>What did not go well?:</b> {{lesson.gaps_what}}</p>
+                    {% endif %}
+
+                    {% if lesson.gaps_how %}
+                    <p><b>How can barriers be solved?:</b> {{lesson.gaps_how}}</p>
+                    {% endif %}
+                    {% endif %}
+
+                    {% if lesson.applicability or lesson.adding_resources or lesson.complementary_outputs %}
+                    <h2>Explore</h2>
+
+                    {% if lesson.applicability %}
+                    <p><b>Applicability to other scales, interventions, areas, cities:</b> {{lesson.applicability}}</p>
+                    {% endif %}
+
+                    {% if lesson.adding_resources %}
+                    <p><b>Adding resources from/to other policies or plans:</b> {{lesson.adding_resources}}</p>
+                    {% endif %}
+
+                    {% if lesson.complementary_outputs %}
+                    <p><b>Complementary outputs (not expected):</b> {{lesson.complementary_outputs}}</p>
+                    {% endif %}
+                    {% endif %}
+
+                </div>
             </div>
+            {% endfor %}
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
         </div>
-        {% endfor %}
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
     </div>
-</div>
 </div>
 
 
