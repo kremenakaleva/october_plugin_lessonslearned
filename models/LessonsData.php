@@ -28,4 +28,5 @@ class LessonsData extends Model
      */
     public $rules = [
     ];
+
 }

@@ -19,6 +19,7 @@ class Filter extends ComponentBase
 
     public function onRun()
     {
+        $this->addJs('assets/js/select2.js');
         $this->lessons = $this->filterLessons();
     }
 
@@ -56,31 +57,27 @@ class Filter extends ComponentBase
         $this->page['single_category'] = $single_category;
 
         $query = LessonsModel::query();
+        $arrayFilters = [
+            'classification' => $classification,
+            'transversal_topics' => $transversal_topics,
+            'four_m' => $four_m,
+            'challenges' => $challenges,
+        ];
 
-        if($classification){
-            $query->where('classification', 'ILIKE', '%'.trim($classification).'%');
+        foreach ($arrayFilters as $column => $values) {
+            if ($values) {
+                $valuesArray = is_array($values) ? $values : [$values];
+                $query->where(function($query) use ($column, $valuesArray) {
+                    foreach ($valuesArray as $value) {
+                        if(!empty(trim($value))) {
+                            $query->orWhere($column, 'ILIKE', '%' . trim($value) . '%');
+                        }
+                    }
+                });
+            }
         }
-
-        if($categories && count($categories)){
-            $query->whereIn('category', $categories);
-        }
-
-        if($single_category){
-            $query->where('category', $single_category);
-        }
-
-        if($transversal_topics){
-            $query->where('transversal_topics', 'ILIKE', '%'.trim($transversal_topics).'%');
-        }
-
-        if($four_m){
-            $query->where('four_m', 'ILIKE', '%'.trim($four_m).'%');
-        }
-
-        if($challenges){
-            $query->where('challenges', 'ILIKE', '%'.trim($challenges).'%');
-        }
-
+        
+        
         if($city){
             $query->where('city', 'ILIKE', '%'.trim($city).'%');
         }

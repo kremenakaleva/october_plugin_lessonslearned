@@ -1,9 +1,12 @@
 {% set lessons = filter.lessons %}
-<div class="left_column_content filter_form_container">
+<div class="left_column_lessons filter_form_container">
     <form method="get" action="{{url('lessons-learned')}}" id="filter-lessons-form">
         <div id="search" class="search" style="display: flex;">
             <input class="search" name="searchQuery" type="text" autocomplete="on" placeholder="Search" value="{{searchQuery}}">
-            <button class="pr p-search big" type="submit"></button>
+            <button class="form-btn search-btn" type="submit">
+                <i class="pr p-search big"></i>
+            </button>
+            
         </div>
 
         <div class="fields custom-select filter-lessons-form mt-2">
@@ -27,62 +30,83 @@
 
             <h3>CLASSIFICATION</h3>
             <div class="row">
-                <div class="col-xs-12">
-                    <select name="classification" class="classic">
-                        <option value=""> -- Classification -- </option>
-                        <option value="NbS Technical Design" {% if classification == "NbS Technical Design" %} selected {% endif %}>NbS Technical Design & Implementation</option>
-                        <option value="NbS Typology" {% if classification == "NbS Typology" %} selected {% endif %}>NbS Typology</option>
-                        <option value="Communication and Awareness Raising" {% if classification == "Communication and Awareness Raising" %} selected {% endif %}>Communication & Awareness Raising</option>
-                        <option value="Communication Strategy" {% if classification == "Communication Strategy" %} selected {% endif %}>Communication Strategy</option>
-                        <option value="NbS Planning" {% if classification == "NbS Planning" %} selected {% endif %}>NbS Planning</option>
-                        <option value="Integrated Management System" {% if classification == "Integrated Management System" %} selected {% endif %}>Integrated Management System</option>
-                        <option value="Awareness Raising" {% if classification == "Awareness Raising" %} selected {% endif %}>Awareness Raising</option>
-                        <option value="INSTRUMENTS AND METHODS" {% if classification == "INSTRUMENTS AND METHODS" %} selected {% endif %}>Instruments & Methods</option>
-                        <option value="Collaborative Governance Approaches" {% if classification == "Collaborative Governance Approaches" %} selected {% endif %}>Collaborative Governance Approaches</option>
+                <div class="col-xs-12 d-grid">
+                    <label for="classification-dropdown">Classification</label>
+                    <select id="classification-dropdown" name="classification[]" multiple="multiple">
+                        <optgroup label="Classifications"></optgroup>
+                        <option value="NbS Technical Design" {% if "NbS Technical Design" in classification %} selected {% endif %}>NbS Technical Design & Implementation</option>
+                        <option value="NbS Typology" {% if "NbS Typology" in classification %} selected {% endif %}>NbS Typology</option>
+                        <option value="Communication and Awareness Raising" {% if "Communication and Awareness Raising" in classification %} selected {% endif %}>Communication & Awareness Raising</option>
+                        <option value="Communication Strategy" {% if "Communication Strategy" in classification %} selected {% endif %}>Communication Strategy</option>
+                        <option value="NbS Planning" {% if "NbS Planning" in classification %} selected {% endif %}>NbS Planning</option>
+                        <option value="Integrated Management System" {% if "Integrated Management System" in classification %} selected {% endif %}>Integrated Management System</option>
+                        <option value="Awareness Raising" {% if "Awareness Raising" in classification %} selected {% endif %}>Awareness Raising</option>
+                        <option value="INSTRUMENTS AND METHODS" {% if "INSTRUMENTS AND METHODS" in classification %} selected {% endif %}>Instruments & Methods</option>
+                        <option value="Collaborative Governance Approaches" {% if "Collaborative Governance Approaches" in classification %} selected {% endif %}>Collaborative Governance Approaches</option>
                     </select>
                 </div>
             </div>
+            
+            <div class="row">
+                <div class="col-xs-12 d-grid">
+                    <label for="transversal_topics-dropdown">Transversal Topics</label>
+                    <select id="transversal_topics-dropdown" name="transversal_topics[]" multiple="multiple">
+                        <optgroup label="Transversal Topics"></optgroup>
+                        <option value="Facing COVID-19" {% if "Facing COVID-19" in transversal_topics %} selected {% endif %}>Facing COVID-19</option>
+                        <option value="Co-creation" {% if "Co-creation" in transversal_topics %} selected {% endif %}>Co-creation</option>
+                    </select>
+                </div>
+            </div>
+            
 
             <div class="row">
-                <div class="col-xs-12">
-                    <select name="transversal_topics" class="classic">
-                        <option value=""> -- Transversal topics -- </option>
-                        <option value="Facing COVID-19" {% if transversal_topics == "Facing COVID-19" %} selected {% endif %}>Facing COVID-19</option>
-                        <option value="Co-creation" {% if transversal_topics == "Co-creation" %} selected {% endif %}>Co-creation</option>
+                <div class="col-xs-12 d-grid">
+                    <label for="four_m">4M</label>
+                    <select id="four_m-dropdown" name="four_m[]" multiple="multiple">
+                        <optgroup label="4M"></optgroup>
+                        <option value="Monitoring" {% if "Monitoring" in four_m %} selected {% endif %}>Monitoring</option>
+                        <option value="Management" {% if "Management" in four_m %} selected {% endif %}>Management</option>
+                        <option value="Methods" {% if "Methods" in four_m %} selected {% endif %}>Methods</option>
+                        <option value="Material" {% if "Material" in four_m %} selected {% endif %}>Material</option>
                     </select>
                 </div>
             </div>
+            
 
             <div class="row">
-                <div class="col-xs-12">
-                    <select name="four_m" class="classic">
-                        <option value=""> -- 4 M -- </option>
-                        <option value="Monitoring" {% if four_m == "Monitoring" %} selected {% endif %}>Monitoring</option>
-                        <option value="Management" {% if four_m == "Management" %} selected {% endif %}>Management</option>
-                        <option value="Methods" {% if four_m == "Methods" %} selected {% endif %}>Methods</option>
-                        <option value="Material " {% if four_m == "Material " %} selected {% endif %}>Material</option>
+                <div class="col-xs-12 d-grid">
+                    <label for="challenges-dropdown">Challenges</label>
+                    <select id="challenges-dropdown" name="challenges[]" multiple="multiple">
+                        <optgroup label="Challenges"></optgroup>
+                        <option value="Human health" {% if "Human health" in challenges %} selected {% endif %}>Human health and well-being</option>
+                        <option value="Sustainable" {% if "Sustainable" in challenges %} selected {% endif %}>Sustainable economic prosperity</option>
+                        <option value="Social cohesion" {% if "Social cohesion" in challenges %} selected {% endif %}>Social cohesion and environmental justice</option>
+                        <option value="Citizen security" {% if "Citizen security" in challenges %} selected {% endif %}>Citizen security</option>
                     </select>
                 </div>
             </div>
-
-            <div class="row">
-                <div class="col-xs-12">
-                    <select name="challenges" class="classic">
-                        <option value=""> -- Challenges -- </option>
-                        <option value="Human health" {% if challenges == "Human health" %} selected {% endif %}>Human health and well-being</option>
-                        <option value="Sustainable" {% if challenges == "Sustainable" %} selected {% endif %}>Sustainable economic prosperity</option>
-                        <option value="Social cohesion" {% if challenges == "Social cohesion" %} selected {% endif %}>Social cohesion and environmental justice</option>
-                        <option value="Citizen security" {% if challenges == "Citizen security" %} selected {% endif %}>Citizen security</option>
-                    </select>
-                </div>
-            </div>
+            
 
             <h3>IDENTIFICATION</h3>
             <div class="row">
-                <div class="col-xs-12">
-                    <input name="city" placeholder="City" value="{{city}}">
+                <div class="col-xs-12 d-grid">
+                    <label for="city-dropdown">City</label>
+                    <select id="city-dropdown" name="city">
+                        <optgroup label="City"></optgroup>
+                        <option value="" {% if not city %} selected {% endif %}>Select an option</option>
+                        <option value="Milan" {% if city == "Milan" %} selected {% endif %}>Milan</option>
+                        <option value="London" {% if city == "London" %} selected {% endif %}>London</option>
+                        <option value="Hamburg" {% if city == "Hamburg" %} selected {% endif %}>Hamburg</option>
+                        <option value="Malmo" {% if city == "Malmo" %} selected {% endif %}>Malmo</option>
+                        <option value="Belgrade" {% if city == "Belgrade" %} selected {% endif %}>Belgrade</option>
+                        <option value="Madrid" {% if city == "Madrid" %} selected {% endif %}>Madrid</option>
+                        <option value="Larissa" {% if city == "Larissa" %} selected {% endif %}>Larissa</option>
+                        <option value="Sfantu-Gheorghe" {% if city == "Sfantu-Gheorghe" %} selected {% endif %}>Sfantu-Gheorghe</option>
+                        <option value="Quito" {% if city == "Quito" %} selected {% endif %}>Quito</option>
+                    </select>
                 </div>
             </div>
+
             <!--                <div class="row">-->
             <!--                    <div class="col-xs-12">-->
             <!--                        <input name="area" placeholder="CAL/NBS/Area" value="{{area}}">-->
@@ -100,7 +124,7 @@
             <!--                </div>-->
             <div class="row">
                 <div class="col-xs-12">
-                    <button type="submit">Filter</button>
+                    <button type="submit" class="form-btn">Filter</button>
                 </div>
             </div>
         </div>
@@ -257,5 +281,4 @@
         </div>
     </div>
 </div>
-
 
