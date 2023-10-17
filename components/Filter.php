@@ -57,6 +57,11 @@ class Filter extends ComponentBase
         $this->page['single_category'] = $single_category;
 
         $query = LessonsModel::query();
+        
+        if ($categories && is_array($categories)) {
+            $query->whereIn('category', $categories);
+        }
+
         $arrayFilters = [
             'classification' => $classification,
             'transversal_topics' => $transversal_topics,
