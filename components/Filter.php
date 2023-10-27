@@ -34,21 +34,21 @@ class Filter extends ComponentBase
     protected function filterLessons(){
         $categories = \Input::get('category');
         $single_category = \Input::get('single_category');
-        $classification = \Input::get('classification');
-        $transversal_topics = \Input::get('transversal_topics');
+        // $classification = \Input::get('classification');
+        // $transversal_topics = \Input::get('transversal_topics');
         $four_m = \Input::get('four_m');
-        $challenges = \Input::get('challenges');
+        // $challenges = \Input::get('challenges');
         $city = \Input::get('city');
         $area = \Input::get('area');
         $time = \Input::get('time');
         $contact = \Input::get('contact');
         $search = \Input::get('searchQuery');
 
-        $this->page['classification'] = $classification;
+        // $this->page['classification'] = $classification;
         $this->page['categories'] = $categories;
-        $this->page['transversal_topics'] = $transversal_topics;
+        // $this->page['transversal_topics'] = $transversal_topics;
         $this->page['four_m'] = $four_m;
-        $this->page['challenges'] = $challenges;
+        // $this->page['challenges'] = $challenges;
         $this->page['city'] = $city;
         $this->page['area'] = $area;
         $this->page['time'] = $time;
@@ -62,25 +62,36 @@ class Filter extends ComponentBase
             $query->whereIn('category', $categories);
         }
 
-        $arrayFilters = [
-            'classification' => $classification,
-            'transversal_topics' => $transversal_topics,
-            'four_m' => $four_m,
-            'challenges' => $challenges,
-        ];
-
-        foreach ($arrayFilters as $column => $values) {
-            if ($values) {
-                $valuesArray = is_array($values) ? $values : [$values];
-                $query->where(function($query) use ($column, $valuesArray) {
-                    foreach ($valuesArray as $value) {
-                        if(!empty(trim($value))) {
-                            $query->orWhere($column, 'ILIKE', '%' . trim($value) . '%');
-                        }
+        if ($four_m) {
+            $valuesArray = is_array($four_m) ? $four_m : [$four_m];
+            $query->where(function($query) use ($valuesArray) {
+                foreach ($valuesArray as $value) {
+                    if(!empty(trim($value))) {
+                        $query->orWhere('four_m', 'ILIKE', '%' . trim($value) . '%');
                     }
-                });
-            }
+                }
+            });
         }
+        
+        // $arrayFilters = [
+        //     'classification' => $classification,
+        //     'transversal_topics' => $transversal_topics,
+        //     'four_m' => $four_m,
+        //     'challenges' => $challenges,
+        // ];
+
+        // foreach ($arrayFilters as $column => $values) {
+        //     if ($values) {
+        //         $valuesArray = is_array($values) ? $values : [$values];
+        //         $query->where(function($query) use ($column, $valuesArray) {
+        //             foreach ($valuesArray as $value) {
+        //                 if(!empty(trim($value))) {
+        //                     $query->orWhere($column, 'ILIKE', '%' . trim($value) . '%');
+        //                 }
+        //             }
+        //         });
+        //     }
+        // }
         
         
         if($city){
@@ -103,7 +114,7 @@ class Filter extends ComponentBase
             $query->where('name', 'ILIKE', '%'.trim($search).'%')
                 ->orWhere('description', 'ILIKE', '%'.trim($search).'%')
                 ->orWhere('classification', 'ILIKE', '%'.trim($search).'%')
-                ->orWhere('transversal_topics', 'ILIKE', '%'.trim($search).'%')
+                ->orWhere(' ', 'ILIKE', '%'.trim($search).'%')
                 ->orWhere('four_m', 'ILIKE', '%'.trim($search).'%')
                 ->orWhere('four_m', 'ILIKE', '%'.trim($search).'%')
                 ->orWhere('challenges', 'ILIKE', '%'.trim($search).'%')

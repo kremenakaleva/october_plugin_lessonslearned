@@ -35,3 +35,5 @@
     - 'Filter update'
 1.0.16:
     - 'filter type fix'
+1.0.17:
+    - 'removed classifications from lessons learned'
