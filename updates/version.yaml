@@ -37,3 +37,5 @@
     - 'filter type fix'
 1.0.17:
     - 'removed classifications from lessons learned'
+1.0.18:
+    - 'Removed titles from lessons learned filter'

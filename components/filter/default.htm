@@ -6,7 +6,7 @@
             <button class="form-btn search-btn" type="submit">
                 <i class="pr p-search big"></i>
             </button>
-            
+
         </div>
 
         <div class="fields custom-select filter-lessons-form mt-2">
@@ -28,9 +28,8 @@
                 <span class="checkmark"></span>
             </label>
 
-            <h3>CLASSIFICATION</h3>
-            <div class="row">
-                <!-- <div class="col-xs-12 d-grid">
+            <!-- <div class="row">
+                <div class="col-xs-12 d-grid">
                     <label for="classification-dropdown">Classification</label>
                     <select id="classification-dropdown" name="classification[]" multiple="multiple">
                         <optgroup label="Classifications"></optgroup>
@@ -44,9 +43,9 @@
                         <option value="INSTRUMENTS AND METHODS" {% if "INSTRUMENTS AND METHODS" in classification %} selected {% endif %}>Instruments & Methods</option>
                         <option value="Collaborative Governance Approaches" {% if "Collaborative Governance Approaches" in classification %} selected {% endif %}>Collaborative Governance Approaches</option>
                     </select>
-                </div> -->
-            </div>
-            
+                </div>
+            </div> -->
+
             <!-- <div class="row">
                 <div class="col-xs-12 d-grid">
                     <label for="transversal_topics-dropdown">Transversal Topics</label>
@@ -57,21 +56,21 @@
                     </select>
                 </div>
             </div> -->
-            
+
 
             <div class="row">
                 <div class="col-xs-12 d-grid">
                     <label for="four_m">4M</label>
                     <select id="four_m-dropdown" name="four_m[]" multiple="multiple">
                         <optgroup label="4M"></optgroup>
-                        <option value="Monitoring" {% if "Monitoring" in four_m %} selected {% endif %}>Monitoring</option>
-                        <option value="Management" {% if "Management" in four_m %} selected {% endif %}>Management</option>
-                        <option value="Methods" {% if "Methods" in four_m %} selected {% endif %}>Methods</option>
                         <option value="Material" {% if "Material" in four_m %} selected {% endif %}>Material</option>
+                        <option value="Methods" {% if "Methods" in four_m %} selected {% endif %}>Methods</option>
+                        <option value="Management" {% if "Management" in four_m %} selected {% endif %}>Management</option>
+                        <option value="Monitoring" {% if "Monitoring" in four_m %} selected {% endif %}>Monitoring</option>
                     </select>
                 </div>
             </div>
-            
+
 
             <!-- <div class="row">
                 <div class="col-xs-12 d-grid">
@@ -85,24 +84,22 @@
                     </select>
                 </div>
             </div> -->
-            
 
-            <h3>IDENTIFICATION</h3>
             <div class="row">
                 <div class="col-xs-12 d-grid">
                     <label for="city-dropdown">City</label>
                     <select id="city-dropdown" name="city">
                         <optgroup label="City"></optgroup>
                         <option value="" {% if not city %} selected {% endif %}>Select an option</option>
-                        <option value="Milan" {% if city == "Milan" %} selected {% endif %}>Milan</option>
-                        <option value="London" {% if city == "London" %} selected {% endif %}>London</option>
                         <option value="Hamburg" {% if city == "Hamburg" %} selected {% endif %}>Hamburg</option>
-                        <option value="Malmo" {% if city == "Malmo" %} selected {% endif %}>Malmo</option>
+                        <option value="London" {% if city == "London" %} selected {% endif %}>London</option>
+                        <option value="Milan" {% if city == "Milan" %} selected {% endif %}>Milan</option>
                         <option value="Belgrade" {% if city == "Belgrade" %} selected {% endif %}>Belgrade</option>
-                        <option value="Madrid" {% if city == "Madrid" %} selected {% endif %}>Madrid</option>
                         <option value="Larissa" {% if city == "Larissa" %} selected {% endif %}>Larissa</option>
-                        <option value="Sfantu-Gheorghe" {% if city == "Sfantu-Gheorghe" %} selected {% endif %}>Sfantu-Gheorghe</option>
+                        <option value="Madrid" {% if city == "Madrid" %} selected {% endif %}>Madrid</option>
+                        <option value="Malmö" {% if city == "Malmö" %} selected {% endif %}>Malmö</option>
                         <option value="Quito" {% if city == "Quito" %} selected {% endif %}>Quito</option>
+                        <option value="Sfântu Gheorghe" {% if city == "Sfântu Gheorghe" %} selected {% endif %}>Sfântu Gheorghe</option>
                     </select>
                 </div>
             </div>
