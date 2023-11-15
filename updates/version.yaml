@@ -44,3 +44,6 @@
     - builder_table_update_pensoft_lessons_data_7.php
 1.0.20:
     - 'Logic refactoring'
+1.0.21:
+    - 'Updated table pensoft_lessons_data'
+    - builder_table_update_pensoft_lessons_data_8.php
