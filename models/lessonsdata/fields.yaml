@@ -4,185 +4,33 @@ fields:
         size: large
         span: auto
         type: richeditor
-    name:
-        label: Name
-        size: ''
-        span: auto
-        type: textarea
     category:
         label: Category
         options:
             1: 'Policy & planning'
             2: 'Social impact'
             3: 'Co-creation & empowerment'
-        showSearch: true
         span: auto
-        type: dropdown
-tabs:
-    fields:
-        classification:
-            label: Classifications
-            options:
-                'NBS Technical Design & Implementation': 'NBS Technical Design & Implementation'
-                'NBS TYPOLOGY': 'NBS TYPOLOGY'
-                'Communication and Awareness Raising': 'Communication and Awareness Raising'
-                'COMMUNICATION STRATEGY': 'COMMUNICATION STRATEGY'
-                'NBS Planning': 'NBS Planning'
-                'INTEGRATED MANAGEMENT SYSTEM': 'INTEGRATED MANAGEMENT SYSTEM'
-                'AWARENESS RAISING': 'AWARENESS RAISING'
-                'INSTRUMENTS AND METHODS': 'INSTRUMENTS AND METHODS'
-                'COLLABORATIVE GOVERNANCE APPROACHES': 'COLLABORATIVE GOVERNANCE APPROACHES'
-            span: auto
-            type: checkboxlist
-            tab: CLASSIFICATION
-        challenges:
-            label: Challanges
-            options:
-                'Human health and well-being': 'Human health and well-being'
-                'Sustainable economic prosperity': 'Sustainable economic prosperity'
-                'Social cohesion and environmental justice': 'Social cohesion and environmental justice'
-                'Citizen security': 'Citizen security'
-            span: auto
-            type: checkboxlist
-            tab: CLASSIFICATION
-        transversal_topics:
-            label: 'Transversal topics'
-            options:
-                0: '-- Choose --'
-                'Facing COVID- 19': 'Facing COVID- 19'
-                Co-creation: Co-creation
-            showSearch: true
-            span: auto
-            type: dropdown
-            tab: CLASSIFICATION
-        four_m:
-            label: '4 M'
-            options:
-                Monitoring: Monitoring
-                Management: Management
-                Methods: Methods
-            showSearch: true
-            span: auto
-            type: dropdown
-            tab: CLASSIFICATION
-        related_product:
-            label: 'Related product'
-            options:
-                0: '-- Choose --'
-                'Replication Roadmap documents from each FE city': 'Replication Roadmap documents from each FE city'
-                'UIP launch Documents from each FE city': 'UIP launch Documents from each FE city'
-            showSearch: true
-            span: auto
-            type: dropdown
-            tab: CLASSIFICATION
-        city:
-            label: 'City (Where?)'
-            span: auto
-            type: text
-            tab: INDENTIFICATION
-        area:
-            label: 'CAL/NBS/ Area (Where?)'
-            span: auto
-            type: text
-            tab: INDENTIFICATION
-        scale:
-            label: 'Scale (Where it was implented?)'
-            span: auto
-            type: text
-            tab: INDENTIFICATION
-        time:
-            label: 'Time (When?)'
-            span: auto
-            type: text
-            tab: INDENTIFICATION
-        contact:
-            label: 'Contact (Who?)'
-            span: auto
-            type: text
-            tab: INDENTIFICATION
-        related_docs:
-            label: 'Related docs/ events/ tools (How?)'
-            span: auto
-            type: text
-            tab: INDENTIFICATION
-        available_documents:
-            label: 'Available documents'
-            span: auto
-            type: text
-            tab: INDENTIFICATION
-        how_lesson_learned:
-            label: 'How the lesson was learned'
-            size: ''
-            span: auto
-            default: '0'
-            type: textarea
-            tab: 'DETAILS/ RELATIONS (Clear statement of the LL)'
-        needs:
-            label: 'Needs / Challenges'
-            size: small
-            span: auto
-            type: richeditor
-            tab: 'DETAILS/ RELATIONS (Clear statement of the LL)'
-        innovation_aspects:
-            label: 'Innovation aspects'
-            size: ''
-            span: auto
-            default: '0'
-            type: textarea
-            tab: 'DETAILS/ RELATIONS (Clear statement of the LL)'
-        benefits:
-            label: 'Benefits of using the lesson'
-            size: ''
-            span: auto
-            default: '0'
-            type: textarea
-            tab: 'DETAILS/ RELATIONS (Clear statement of the LL)'
-        key_factors:
-            label: 'Key factors'
-            size: ''
-            span: auto
-            default: '0'
-            type: textarea
-            tab: 'DETAILS/ RELATIONS (Clear statement of the LL)'
-        gaps_identified:
-            label: 'GAPs identified in T.1.2. (does the lesson learned cover them? Which?'
-            size: ''
-            span: auto
-            default: '0'
-            type: textarea
-            tab: GAPS
-        gaps_what:
-            label: 'What did not go well?'
-            size: ''
-            span: auto
-            default: '0'
-            type: textarea
-            tab: GAPS
-        gaps_how:
-            label: 'How can barriers be solved?'
-            size: ''
-            span: auto
-            default: '0'
-            type: textarea
-            tab: GAPS
-        applicability:
-            label: 'Applicability to other scales, interventions, areas, cities'
-            size: ''
-            span: auto
-            default: '0'
-            type: textarea
-            tab: Explore
-        adding_resources:
-            label: 'Adding resources from/to other policies or plans'
-            size: ''
-            span: auto
-            default: '0'
-            type: textarea
-            tab: Explore
-        complementary_outputs:
-            label: 'Complementary outputs (not expected)'
-            size: ''
-            span: auto
-            default: '0'
-            type: textarea
-            tab: Explore
+        type: checkboxlist
+    four_m:
+        label: '4 M'
+        options:
+            Monitoring: Monitoring
+            Management: Management
+            Methods: Methods
+        span: auto
+        type: checkboxlist
+    city:
+        label: 'City (Where?)'
+        options:
+            Hamburg: 'Hamburg'
+            London: 'London'
+            Milan: 'Milan'
+            Belgrade: 'Belgrade'
+            Larissa: 'Larissa'
+            Madrid: 'Madrid'
+            Malmö: 'Malmö'
+            Quito: 'Quito'
+            Sfântu Gheorghe: 'Sfântu Gheorghe'
+        span: auto
+        type: checkboxlist

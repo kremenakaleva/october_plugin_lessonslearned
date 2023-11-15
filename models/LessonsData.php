@@ -15,8 +15,7 @@ class LessonsData extends Model
 
     protected $dates = ['deleted_at'];
 
-    protected $jsonable = ['classification', 'challenges'];
-
+    protected $jsonable = ['classification', 'challenges', 'four_m', 'category', 'city'];
 
     /**
      * @var string The database table used by the model.
@@ -28,5 +27,4 @@ class LessonsData extends Model
      */
     public $rules = [
     ];
-
 }

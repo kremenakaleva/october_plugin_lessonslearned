@@ -28,36 +28,6 @@
                 <span class="checkmark"></span>
             </label>
 
-            <!-- <div class="row">
-                <div class="col-xs-12 d-grid">
-                    <label for="classification-dropdown">Classification</label>
-                    <select id="classification-dropdown" name="classification[]" multiple="multiple">
-                        <optgroup label="Classifications"></optgroup>
-                        <option value="NbS Technical Design" {% if "NbS Technical Design" in classification %} selected {% endif %}>NbS Technical Design & Implementation</option>
-                        <option value="NbS Typology" {% if "NbS Typology" in classification %} selected {% endif %}>NbS Typology</option>
-                        <option value="Communication and Awareness Raising" {% if "Communication and Awareness Raising" in classification %} selected {% endif %}>Communication & Awareness Raising</option>
-                        <option value="Communication Strategy" {% if "Communication Strategy" in classification %} selected {% endif %}>Communication Strategy</option>
-                        <option value="NbS Planning" {% if "NbS Planning" in classification %} selected {% endif %}>NbS Planning</option>
-                        <option value="Integrated Management System" {% if "Integrated Management System" in classification %} selected {% endif %}>Integrated Management System</option>
-                        <option value="Awareness Raising" {% if "Awareness Raising" in classification %} selected {% endif %}>Awareness Raising</option>
-                        <option value="INSTRUMENTS AND METHODS" {% if "INSTRUMENTS AND METHODS" in classification %} selected {% endif %}>Instruments & Methods</option>
-                        <option value="Collaborative Governance Approaches" {% if "Collaborative Governance Approaches" in classification %} selected {% endif %}>Collaborative Governance Approaches</option>
-                    </select>
-                </div>
-            </div> -->
-
-            <!-- <div class="row">
-                <div class="col-xs-12 d-grid">
-                    <label for="transversal_topics-dropdown">Transversal Topics</label>
-                    <select id="transversal_topics-dropdown" name="transversal_topics[]" multiple="multiple">
-                        <optgroup label="Transversal Topics"></optgroup>
-                        <option value="Facing COVID-19" {% if "Facing COVID-19" in transversal_topics %} selected {% endif %}>Facing COVID-19</option>
-                        <option value="Co-creation" {% if "Co-creation" in transversal_topics %} selected {% endif %}>Co-creation</option>
-                    </select>
-                </div>
-            </div> -->
-
-
             <div class="row">
                 <div class="col-xs-12 d-grid">
                     <label for="four_m">4M</label>
@@ -71,20 +41,6 @@
                 </div>
             </div>
 
-
-            <!-- <div class="row">
-                <div class="col-xs-12 d-grid">
-                    <label for="challenges-dropdown">Challenges</label>
-                    <select id="challenges-dropdown" name="challenges[]" multiple="multiple">
-                        <optgroup label="Challenges"></optgroup>
-                        <option value="Human health" {% if "Human health" in challenges %} selected {% endif %}>Human health and well-being</option>
-                        <option value="Sustainable" {% if "Sustainable" in challenges %} selected {% endif %}>Sustainable economic prosperity</option>
-                        <option value="Social cohesion" {% if "Social cohesion" in challenges %} selected {% endif %}>Social cohesion and environmental justice</option>
-                        <option value="Citizen security" {% if "Citizen security" in challenges %} selected {% endif %}>Citizen security</option>
-                    </select>
-                </div>
-            </div> -->
-
             <div class="row">
                 <div class="col-xs-12 d-grid">
                     <label for="city-dropdown">City</label>
@@ -97,33 +53,19 @@
                         <option value="Belgrade" {% if city == "Belgrade" %} selected {% endif %}>Belgrade</option>
                         <option value="Larissa" {% if city == "Larissa" %} selected {% endif %}>Larissa</option>
                         <option value="Madrid" {% if city == "Madrid" %} selected {% endif %}>Madrid</option>
-                        <option value="Malmö" {% if city == "Malmö" %} selected {% endif %}>Malmö</option>
+                        <option value="Malm\u00f6" {% if city == "Malmö" %} selected {% endif %}>Malmö</option>
                         <option value="Quito" {% if city == "Quito" %} selected {% endif %}>Quito</option>
-                        <option value="Sfântu Gheorghe" {% if city == "Sfântu Gheorghe" %} selected {% endif %}>Sfântu Gheorghe</option>
+                        <option value="Sf\u00e2ntu Gheorghe" {% if city == "Sfântu Gheorghe" %} selected {% endif %}>Sfântu Gheorghe</option>
                     </select>
                 </div>
             </div>
 
-            <!--                <div class="row">-->
-            <!--                    <div class="col-xs-12">-->
-            <!--                        <input name="area" placeholder="CAL/NBS/Area" value="{{area}}">-->
-            <!--                    </div>-->
-            <!--                </div>-->
-            <!--                <div class="row">-->
-            <!--                    <div class="col-xs-12">-->
-            <!--                        <input name="time" placeholder="Time" value="{{time}}">-->
-            <!--                    </div>-->
-            <!--                </div>-->
-            <!--                <div class="row">-->
-            <!--                    <div class="col-xs-12">-->
-            <!--                        <input name="contact" placeholder="Contact" value="{{contact}}">-->
-            <!--                    </div>-->
-            <!--                </div>-->
             <div class="row">
                 <div class="col-xs-12">
                     <button type="submit" class="form-btn">Filter</button>
                 </div>
             </div>
+
         </div>
     </form>
 </div>
@@ -137,138 +79,27 @@
                     <a onclick="filterByCategory(3);">Co-creation & empowerment</a>
                 </div>
             {% for lesson in lessons %}
-            <div class="accordion_item key_{{lesson.id}} category_{{lesson.category}}">
+            <div class="accordion_item key_{{lesson.id}} {% for cat in lesson.category %}category_{{cat}} {% endfor %}">
                 <div class="accordion">{{lesson.name}}</div>
                 <div class="panel">
-                    <h2>CLASSIFICATION</h2>
-                    {% if lesson.classification %}
-                    <p><b>Classification</b></p>
-                    <ul>
-                        {% for classification in lesson.classification %}
-                        <li>{{classification}}</li>
-                        {% endfor %}
-                    </ul>
-                    {% endif %}
-
-                    {% if lesson.transversal_topics %}
-                    <p>&nbsp;</p><p><b>Transversal topics</b></p>
-                    <ul>
-                        <li>{{lesson.transversal_topics}}</li>
-                    </ul>
-                    {% endif %}
-
                     {% if lesson.four_m %}
                     <p>&nbsp;</p><p><b>4 M</b></p>
                     <ul>
-                        <li>{{lesson.four_m}}</li>
-                    </ul>
-                    {% endif %}
-
-                    {% if lesson.challenges %}
-                    <p>&nbsp;</p><p><b>Challenges</b></p>
-                    <ul>
-                        {% for challenge in lesson.challenges %}
-                        <li>{{challenge}}</li>
+                        {% for four_m in lesson.four_m %}
+                        <li>{{four_m}}</li>
                         {% endfor %}
                     </ul>
                     {% endif %}
 
-                    {% if lesson.related_product %}
-                    <p>&nbsp;</p><p><b>Related product</b></p>
+                    {% if lesson.city %}
+                    <p>&nbsp;</p><p><b>City</b></p>
                     <ul>
-                        <li>{{lesson.related_product}}</li>
+                        {% for city in lesson.city %}
+                        <li>{{city}}</li>
+                        {% endfor %}
                     </ul>
                     {% endif %}
-
-
-                    {% if lesson.city or lesson.area or lesson.scale or lesson.time or lesson.contact or lesson.related_docs or lesson.available_documents %}
-                    <h2>INDENTIFICATION</h2>
-                    {% if lesson.city %}
-                    <p><b>City (Where?):</b> {{lesson.city}}</p>
-                    {% endif %}
-
-                    {% if lesson.area %}
-                    <p><b>CAL/NBS/ Area (Where?):</b> {{lesson.area}}</p>
-                    {% endif %}
-
-                    {% if lesson.scale %}
-                    <p><b>Scale (Where it was implented?):</b> {{lesson.scale}}</p>
-                    {% endif %}
-
-                    {% if lesson.time %}
-                    <p><b>Time (When?):</b> {{lesson.time}}</p>
-                    {% endif %}
-
-                    {% if lesson.contact %}
-                    <p><b>Contact (Who?):</b> {{lesson.contact}}</p>
-                    {% endif %}
-
-                    {% if lesson.related_docs %}
-                    <p><b>Related docs/ events/ tools (How?):</b> {{lesson.related_docs}}</p>
-                    {% endif %}
-
-                    {% if lesson.available_documents %}
-                    <p><b>Available documents:</b> {{lesson.available_documents}}</p>
-                    {% endif %}
-                    {% endif %}
-
-                    {% if lesson.how_lesson_learned or lesson.needs or lesson.innovation_aspects or lesson.benefits or lesson.key_factors %}
-                    <h2>DETAILS/ RELATIONS (Clear statement of the LL)</h2>
-
-                    {% if lesson.how_lesson_learned %}
-                    <p><b>How the lesson was learned:</b> {{lesson.how_lesson_learned}}</p>
-                    {% endif %}
-
-                    {% if lesson.needs %}
-                    <p><b>Needs / Challenges:</b> {{lesson.needs|raw}}</p>
-                    {% endif %}
-
-                    {% if lesson.innovation_aspects %}
-                    <p><b>Innovation aspects:</b> {{lesson.innovation_aspects}}</p>
-                    {% endif %}
-
-                    {% if lesson.benefits %}
-                    <p><b>Benefits of using the lesson:</b> {{lesson.benefits}}</p>
-                    {% endif %}
-
-                    {% if lesson.key_factors %}
-                    <p><b>Key factors:</b> {{lesson.key_factors}}</p>
-                    {% endif %}
-                    {% endif %}
-
-
-                    {% if lesson.gaps_identified or lesson.gaps_what or lesson.gaps_how %}
-                    <h2>GAPS</h2>
-
-                    {% if lesson.gaps_identified %}
-                    <p><b>GAPs identified in T.1.2. (does the lesson learned cover them? Which?:</b> {{lesson.gaps_identified}}</p>
-                    {% endif %}
-
-                    {% if lesson.gaps_what %}
-                    <p><b>What did not go well?:</b> {{lesson.gaps_what}}</p>
-                    {% endif %}
-
-                    {% if lesson.gaps_how %}
-                    <p><b>How can barriers be solved?:</b> {{lesson.gaps_how}}</p>
-                    {% endif %}
-                    {% endif %}
-
-                    {% if lesson.applicability or lesson.adding_resources or lesson.complementary_outputs %}
-                    <h2>Explore</h2>
-
-                    {% if lesson.applicability %}
-                    <p><b>Applicability to other scales, interventions, areas, cities:</b> {{lesson.applicability}}</p>
-                    {% endif %}
-
-                    {% if lesson.adding_resources %}
-                    <p><b>Adding resources from/to other policies or plans:</b> {{lesson.adding_resources}}</p>
-                    {% endif %}
-
-                    {% if lesson.complementary_outputs %}
-                    <p><b>Complementary outputs (not expected):</b> {{lesson.complementary_outputs}}</p>
-                    {% endif %}
-                    {% endif %}
-
+                    
                 </div>
             </div>
             {% endfor %}

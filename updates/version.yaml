@@ -39,3 +39,8 @@
     - 'removed classifications from lessons learned'
 1.0.18:
     - 'Removed titles from lessons learned filter'
+1.0.19:
+    - 'Updated table pensoft_lessons_data'
+    - builder_table_update_pensoft_lessons_data_7.php
+1.0.20:
+    - 'Logic refactoring'
