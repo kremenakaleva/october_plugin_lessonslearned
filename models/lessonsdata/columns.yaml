@@ -1,6 +1,6 @@
 columns:
-    id:
-        label: id
+    lesson_number:
+        label: Number
         type: number
         searchable: true
     description:

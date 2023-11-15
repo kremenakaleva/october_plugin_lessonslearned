@@ -79,7 +79,7 @@
                     <a onclick="filterByCategory(3);">Co-creation & empowerment</a>
                 </div>
             {% for lesson in lessons %}
-            <div class="accordion_item key_{{lesson.id}} {% for cat in lesson.category %}category_{{cat}} {% endfor %} ">
+            <div class="accordion_item key_{{lesson.lesson_number}} {% for cat in lesson.category %}category_{{cat}} {% endfor %} ">
                 <div class="accordion">{{lesson.description | raw}}</div>
                 <div class="panel">
                     {% if lesson.four_m %}

@@ -4,6 +4,10 @@ fields:
         size: large
         span: auto
         type: richeditor
+    lesson_number:
+        label: Number
+        span: auto
+        type: number
     category:
         label: Category
         options:
@@ -24,14 +28,14 @@ fields:
     city:
         label: 'City (Where?)'
         options:
-            Hamburg: 'Hamburg'
-            London: 'London'
-            Milan: 'Milan'
-            Belgrade: 'Belgrade'
-            Larissa: 'Larissa'
-            Madrid: 'Madrid'
-            Malmö: 'Malmö'
-            Quito: 'Quito'
-            Sfântu Gheorghe: 'Sfântu Gheorghe'
+            Hamburg: Hamburg
+            London: London
+            Milan: Milan
+            Belgrade: Belgrade
+            Larissa: Larissa
+            Madrid: Madrid
+            Malmö: Malmö
+            Quito: Quito
+            'Sfântu Gheorghe': 'Sfântu Gheorghe'
         span: auto
         type: checkboxlist

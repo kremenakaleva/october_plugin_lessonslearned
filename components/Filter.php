@@ -30,14 +30,14 @@ class Filter extends ComponentBase
         $four_m = \Input::get('four_m');
         $city = \Input::get('city');
         $search = \Input::get('searchQuery');
-    
+
         $this->page['categories'] = $categories;
         $this->page['four_m'] = $four_m;
         $this->page['city'] = $city;
         $this->page['searchQuery'] = $search;
-    
+
         $query = LessonsModel::query();
-    
+
         if ($categories && is_array($categories)) {
             $query->where(function ($subQuery) use ($categories) {
                 foreach ($categories as $category) {
@@ -45,15 +45,15 @@ class Filter extends ComponentBase
                 }
             });
         }
-    
+
         if ($four_m && is_array($four_m)) {
             $query->where(function ($subQuery) use ($four_m) {
                 foreach ($four_m as $m) {
                     $subQuery->orWhereJsonContains('four_m', $m);
                 }
             });
-        }   
-    
+        }
+
         if ($city) {
             $encodedCity = json_encode($city);
             $encodedCity = trim($encodedCity, '"');
@@ -68,6 +68,6 @@ class Filter extends ComponentBase
                 ->orWhere('city', 'ILIKE', '%'.trim($search).'%');
         }
 
-        return $query->get();
+        return $query->orderBy('lesson_number')->get();
     }
 }
