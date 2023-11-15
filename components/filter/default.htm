@@ -79,8 +79,8 @@
                     <a onclick="filterByCategory(3);">Co-creation & empowerment</a>
                 </div>
             {% for lesson in lessons %}
-            <div class="accordion_item key_{{lesson.id}} {% for cat in lesson.category %}category_{{cat}} {% endfor %}">
-                <div class="accordion">{{lesson.name}}</div>
+            <div class="accordion_item key_{{lesson.id}} {% for cat in lesson.category %}category_{{cat}} {% endfor %} ">
+                <div class="accordion">{{lesson.description | raw}}</div>
                 <div class="panel">
                     {% if lesson.four_m %}
                     <p>&nbsp;</p><p><b>4 M</b></p>
@@ -99,7 +99,7 @@
                         {% endfor %}
                     </ul>
                     {% endif %}
-                    
+
                 </div>
             </div>
             {% endfor %}

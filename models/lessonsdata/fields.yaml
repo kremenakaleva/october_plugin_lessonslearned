@@ -15,9 +15,10 @@ fields:
     four_m:
         label: '4 M'
         options:
-            Monitoring: Monitoring
-            Management: Management
+            Material: Material
             Methods: Methods
+            Management: Management
+            Monitoring: Monitoring
         span: auto
         type: checkboxlist
     city:
