@@ -1,0 +1,28 @@
+{% if lessons.count > 0 %}
+    <div class="lessons_title">Lessons Learned</div>
+    {% for lesson in lessons %}
+    <div class="accordion_item key_{{lesson.lesson_number}} {% for cat in lesson.category %}category_{{cat}} {% endfor %} ">
+        <div class="accordion">{{lesson.description | raw}}</div>
+        <div class="panel">
+            {% if lesson.four_m %}
+            <p>&nbsp;</p><p><b>4 M</b></p>
+            <ul>
+                {% for four_m in lesson.four_m %}
+                <li>{{four_m}}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+
+            {% if lesson.city %}
+            <p>&nbsp;</p><p><b>City</b></p>
+            <ul>
+                {% for city in lesson.city %}
+                <li>{{city}}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+
+        </div>
+    </div>
+    {% endfor %}
+{% endif %}

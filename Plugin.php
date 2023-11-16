@@ -8,6 +8,7 @@ class Plugin extends PluginBase
     {
         return [
             'Pensoft\Lessons\Components\Filter' => 'filter',
+            'Pensoft\Lessons\Components\ListLessons' => 'ListLessons',
         ];
     }
 
