@@ -50,3 +50,5 @@
 1.0.22:
     - 'Updated table pensoft_lessons_data'
     - builder_table_update_pensoft_lessons_data_9.php
+1.0.23:
+    - 'Circle 3 colors border'
